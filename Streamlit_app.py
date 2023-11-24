@@ -56,7 +56,6 @@ def initialize_app():
         placeholder = "Enter Password",
         )
 
-
 # If the vector store directory doesn't exist, create it
 if not os.path.exists(VECTORSTORE_PATH):
 
@@ -77,7 +76,6 @@ if not os.path.exists(VECTORSTORE_PATH):
     docsearch = FAISS.from_documents(texts, embeddings)
     docsearch.save_local(VECTORSTORE_PATH)
 
-
 def get_qasource_chain(docsearch):
     qasource_chain = RetrievalQA.from_chain_type(
         llm=ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, max_tokens=1024),
@@ -93,29 +91,11 @@ def get_qasource_chain(docsearch):
     )
     return qasource_chain
 
-def handle_userinput(user_context, response):
+def handle_userinput(response):
     # Add user's question and bot's response to the chat history
-    st.session_state.chat_history.append(('user', user_context))
-    st.session_state.chat_history.append(('bot', response['result']))
-
-    # Display the entire chat history
-    for sender, message in st.session_state.chat_history:
-        if sender == 'user':
-            st.write(
-                user_template.replace("{{MSG}}", message),
-                unsafe_allow_html=True,
-            )
-        else:
-            st.write(
-                bot_template.replace("{{MSG}}", message),
-                unsafe_allow_html=True
-            )
-
+    st.write(bot_template.replace("{{MSG}}", response['result']), unsafe_allow_html=True)
 
 def main():
-    if "chat_history" not in st.session_state:
-        st.session_state.chat_history = []
-
     if "password_flag" not in st.session_state:
         st.session_state.password_flag = False
 
@@ -136,7 +116,7 @@ def main():
             user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}. Mood: {mood}."
             
             response = qasource_chain({"query": user_context})  # Use qasource_chain with the full query
-            handle_userinput(user_context, response)  # Pass the response to handle_userinput()
+            handle_userinput(response)  # Pass the response to handle_userinput()
             
 
     else:
