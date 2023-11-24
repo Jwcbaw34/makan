@@ -30,11 +30,11 @@ if not os.path.exists(local_document_path):
     if response.status_code == 200:
         with open(local_document_path, "wb") as file:
             file.write(response.content)
-        st.success
+        st.success(" ")
     else:
-        st.error
+        st.error("error")
 else:
-    st.success
+    st.success(" ")
 
 # Define the directory where you want to store the vector store
 VECTORSTORE_PATH = "vectorstore"  # You can customize this path if needed
