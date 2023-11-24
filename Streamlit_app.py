@@ -114,9 +114,9 @@ def main():
                 st.warning('Please answer all questions.')
             
             else:
-            user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}. Mood: {mood}."
-            response = qasource_chain({"query": user_context})  # Use qasource_chain with the full query
-            handle_userinput(response)  # Pass the response to handle_userinput()
+                user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}. Mood: {mood}."
+                response = qasource_chain({"query": user_context})  # Use qasource_chain with the full query
+                handle_userinput(response)  # Pass the response to handle_userinput()
             
 
     else:
