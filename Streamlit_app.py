@@ -23,18 +23,18 @@ github_document_url = "https://raw.githubusercontent.com/Jwcbaw34/makan/main/Foo
 # Check if the document is already downloaded; if not, download it
 local_document_path = "Food options.pdf"
 
-#if not os.path.exists(local_document_path):
- #   st.info("Downloading document...")
-  #  response = requests.get(github_document_url)
+if not os.path.exists(local_document_path):
+    st.info("Downloading document...")
+    response = requests.get(github_document_url)
 
-   # if response.status_code == 200:
-    #    with open(local_document_path, "wb") as file:
-     #       file.write(response.content)
-      #  st.success("Document downloaded successfully.")
-   # else:
-    #    st.error(f"Failed to download document: {response.status_code}")
-#else:
- #   st.success("Document already downloaded.")
+    if response.status_code == 200:
+        with open(local_document_path, "wb") as file:
+            file.write(response.content)
+        st.success
+    else:
+        st.error
+else:
+    st.success
 
 # Define the directory where you want to store the vector store
 VECTORSTORE_PATH = "vectorstore"  # You can customize this path if needed
@@ -142,8 +142,8 @@ def main():
     qasource_chain = get_qasource_chain(docsearch)
 
     if st.session_state.password_flag:
-        st.header("Makan inspiration :spoon:")
-        user_question = st.text_input("Need inspiration for where to eat? Tell me more")
+        st.header("Makan Mama :spoon:")
+        user_question = st.text_input("It's that time of the day again, when no one can decide where to eat. Makan Mama is here to help!")
 
         if user_question:
             response = qasource_chain({"query": user_question})  # Use qasource_chain directly
