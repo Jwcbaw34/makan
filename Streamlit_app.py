@@ -143,11 +143,22 @@ def main():
 
     if st.session_state.password_flag:
         st.header("Makan Mama :spoon:")
+
+        # Add new input fields
+        selected_time = st.selectbox('How much time do you have?', ['30 min', '1 hr', '>1 hr'])
+        is_raining = st.selectbox('Is it raining?', ['Yes', 'No'])
+        additional_requirements = st.text_area('Any other requirements or wishes?')
         user_question = st.text_input("It's that time of the day again, when no one can decide where to eat. Makan Mama is here to help!")
 
         if user_question:
-            response = qasource_chain({"query": user_question})  # Use qasource_chain directly
+            # Construct context from new inputs
+            user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}."
+            # Combine user question with context
+            full_query = f"{user_context} User question: {user_question}"
+            
+            response = qasource_chain({"query": full_query})  # Use qasource_chain with the full query
             handle_userinput(user_question, response)  # Pass the response to handle_userinput()
+            
 
     else:
         initialize_app()
