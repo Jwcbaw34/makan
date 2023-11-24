@@ -27,7 +27,7 @@ css = """
 bot_template = """
 <div class="chat-message bot">
     <div class="avatar">
-        <img src="https://i.ibb.co/CVJr8Mz/bot-copy-2.png" style="max-height: 78px; max-width: 78px; border-radius: 50%; object-fit: cover;">
+        <img src="https://raw.githubusercontent.com/Jwcbaw34/makan/main/chef.png" style="max-height: 78px; max-width: 78px; border-radius: 50%; object-fit: cover;">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
@@ -36,7 +36,7 @@ bot_template = """
 user_template = """
 <div class="chat-message user">
     <div class="avatar">
-        <img src="https://i.ibb.co/mznpdvg/cat-copy.png">
+        <img src="https://raw.githubusercontent.com/Jwcbaw34/makan/main/office-worker.png">
     </div>
     <div class="message">{{MSG}}</div>
 </div>
