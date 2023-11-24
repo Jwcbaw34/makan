@@ -18,10 +18,10 @@ openai_api_key = os.environ.get("OPENAI_API_KEY")
 PASSWORD = "FHS"
 
 # Define the URL of your document on GitHub
-github_document_url = "https://raw.githubusercontent.com/Jwcbaw34/KM/main/20161027%20MICU%20Medical%20Board%20Paper%20(1%20Nov%202016%20MB%20Meeting).pdf"
+github_document_url = "https://raw.githubusercontent.com/Jwcbaw34/makan/main/Food%20options.pdf"
 
 # Check if the document is already downloaded; if not, download it
-local_document_path = "20161027 MICU Medical Board Paper (1 Nov 2016 MB Meeting).pdf"
+local_document_path = "Food options.pdf"
 
 if not os.path.exists(local_document_path):
     st.info("Downloading document...")
