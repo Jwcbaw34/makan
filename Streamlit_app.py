@@ -83,8 +83,6 @@ def get_qasource_chain(docsearch):
         retriever=docsearch.as_retriever(),
         chain_type_kwargs={
             "verbose": True,
-            "prompt": prompt,
-            "memory": ConversationBufferMemory(memory_key="history", input_key="question"),
         },
         return_source_documents=True,
         verbose=True
