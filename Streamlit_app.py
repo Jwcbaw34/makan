@@ -23,18 +23,18 @@ github_document_url = "https://raw.githubusercontent.com/Jwcbaw34/makan/main/Foo
 # Check if the document is already downloaded; if not, download it
 local_document_path = "Food options.pdf"
 
-if not os.path.exists(local_document_path):
-    st.info("Downloading document...")
-    response = requests.get(github_document_url)
+#if not os.path.exists(local_document_path):
+ #   st.info("Downloading document...")
+  #  response = requests.get(github_document_url)
 
-    if response.status_code == 200:
-        with open(local_document_path, "wb") as file:
-            file.write(response.content)
-        st.success("Document downloaded successfully.")
-    else:
-        st.error(f"Failed to download document: {response.status_code}")
-else:
-    st.success("Document already downloaded.")
+   # if response.status_code == 200:
+    #    with open(local_document_path, "wb") as file:
+     #       file.write(response.content)
+      #  st.success("Document downloaded successfully.")
+   # else:
+    #    st.error(f"Failed to download document: {response.status_code}")
+#else:
+ #   st.success("Document already downloaded.")
 
 # Define the directory where you want to store the vector store
 VECTORSTORE_PATH = "vectorstore"  # You can customize this path if needed
