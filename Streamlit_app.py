@@ -142,7 +142,7 @@ def main():
     qasource_chain = get_qasource_chain(docsearch)
 
     if st.session_state.password_flag:
-        st.header("Knowledge Mgmt Chatbot :bulb:")
+        st.header("Makan inspiration :spoon:")
         user_question = st.text_input("Need inspiration for where to eat? Tell me more")
 
         if user_question:
