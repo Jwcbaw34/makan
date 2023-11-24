@@ -147,11 +147,12 @@ def main():
         # Add new input fields
         selected_time = st.selectbox('How much time do you have?', ['30 min', '1 hr', '>1 hr'])
         is_raining = st.selectbox('Is it raining?', ['Yes', 'No'])
+        mood = st.selectbox('How are you feeling?', ['adventurous', 'stressed', 'at peace', 'tired', 'resolute'])
         additional_requirements = st.text_area('Anything else I should know? Special needs / wishes / cravings?')
 
-        if st.button("Get Food Suggestions"):
+        if st.button("Receive Makan Mama's decision"):
             # Construct context from new inputs
-            user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}."
+            user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}. Mood: {mood}."
             
             response = qasource_chain({"query": user_context})  # Use qasource_chain with the full query
             handle_userinput(user_context, response)  # Pass the response to handle_userinput()
