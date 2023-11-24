@@ -143,7 +143,7 @@ def main():
 
     if st.session_state.password_flag:
         st.header("Knowledge Mgmt Chatbot :bulb:")
-        user_question = st.text_input("Ask about innovation/improvement projects:")
+        user_question = st.text_input("Need inspiration for where to eat? Tell me more")
 
         if user_question:
             response = qasource_chain({"query": user_question})  # Use qasource_chain directly
