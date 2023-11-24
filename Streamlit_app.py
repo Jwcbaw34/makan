@@ -34,7 +34,7 @@ if not os.path.exists(local_document_path):
     else:
         st.error("error")
 else:
-    st.success(" ")
+    st.success("It's that time of the day again, when no one can decide where to eat. Makan Mama is here to help!")
 
 # Define the directory where you want to store the vector store
 VECTORSTORE_PATH = "vectorstore"  # You can customize this path if needed
@@ -112,9 +112,9 @@ def get_qasource_chain(docsearch):
     )
     return qasource_chain
 
-def handle_userinput(user_question, response):
+def handle_userinput(user_context, response):
     # Add user's question and bot's response to the chat history
-    st.session_state.chat_history.append(('user', user_question))
+    st.session_state.chat_history.append(('user', user_context))
     st.session_state.chat_history.append(('bot', response['result']))
 
     # Display the entire chat history
@@ -147,17 +147,14 @@ def main():
         # Add new input fields
         selected_time = st.selectbox('How much time do you have?', ['30 min', '1 hr', '>1 hr'])
         is_raining = st.selectbox('Is it raining?', ['Yes', 'No'])
-        additional_requirements = st.text_area('Any other requirements or wishes?')
-        user_question = st.text_input("It's that time of the day again, when no one can decide where to eat. Makan Mama is here to help!")
+        additional_requirements = st.text_area('Anything else I should know? Special needs / wishes / cravings?')
 
-        if user_question:
+        if st.button("Get Food Suggestions"):
             # Construct context from new inputs
             user_context = f"Time available: {selected_time}. Raining: {is_raining}. Additional requirements: {additional_requirements}."
-            # Combine user question with context
-            full_query = f"{user_context} User question: {user_question}"
             
-            response = qasource_chain({"query": full_query})  # Use qasource_chain with the full query
-            handle_userinput(user_question, response)  # Pass the response to handle_userinput()
+            response = qasource_chain({"query": user_context})  # Use qasource_chain with the full query
+            handle_userinput(user_context, response)  # Pass the response to handle_userinput()
             
 
     else:
