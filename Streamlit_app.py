@@ -39,25 +39,6 @@ else:
 # Define the directory where you want to store the vector store
 VECTORSTORE_PATH = "vectorstore"  # You can customize this path if needed
 
-template = """
-Use the following context (delimited by <ctx></ctx>) and the chat history (delimited by <hs></hs>) to answer the question:
-------
-<ctx>
-{context}
-</ctx>
-------
-<hs>
-{history}
-</hs>
-------
-{question}
-Answer:
-"""
-
-prompt = PromptTemplate(
-    input_variables=["history", "context", "question"],
-    template=template,
-)
 
 def handler_verify():
     input_password = st.session_state.password_input
