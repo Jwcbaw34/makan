@@ -12,7 +12,7 @@ from htmlTemplates import css, bot_template, user_template
 from langchain import PromptTemplate
 
 # Call set_page_config here at the top-level scope
-st.set_page_config(page_title="Makan Inspiration :bulb:", page_icon=":spoon:")
+st.set_page_config(page_title="Makan Inspiration", page_icon=":spoon:")
 
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 PASSWORD = "FHS"
